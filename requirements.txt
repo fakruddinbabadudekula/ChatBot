@@ -1,0 +1,61 @@
+# LangChain Core
+langchain
+langchain-core
+
+# LangChain Community
+langchain_community
+
+# OpenAI Integration
+langchain-openai
+openai
+
+# Anthropic Integration
+langchain-anthropic
+
+# Google Gemini (PaLM) Integration
+langchain-google-genai
+google-generativeai
+
+# Hugging Face Integration
+langchain-huggingface
+transformers
+huggingface-hub
+
+# Environment Variable Management
+python-dotenv
+
+# Machine Learning Utilities
+numpy
+scikit-learn
+
+# deep Learning
+torch
+
+# Youtube Transcript
+youtube-transcript-api
+
+# sentence-transformers for vector embedding model
+sentence-transformers
+
+# huggingface_hub[hf_xet] for fast downloading and storing models
+huggingface_hub[hf_xet]
+
+# faiss-cpu for vector storing
+faiss-cpu
+
+# streamlit 
+streamlit
+
+# langchain_experimental for experimental methods like shell tools 
+langchain_experimental
+
+# ddgs duckduckgo search for ddgs tool
+ddgs
+
+# langgraph
+langgraph
+
+# langgraph-checkpoint-sqllite for using sqllite
+langgraph-checkpoint-sqlite
+
+db-sqlite3

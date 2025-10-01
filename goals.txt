@@ -1,0 +1,7 @@
+//Create single chat applicationn 
+    //add persistance layer to the existance chat(InMemorySaver)
+    //add the sqlsaver to the existance single chat applicationn
+    //create the thread ids
+
+//Focus on multichat
+    pass
