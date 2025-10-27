@@ -84,11 +84,7 @@ if 'thread_id' not in st.session_state:
     # create a obj form with thread_id and Name of the Chat for now and later it stored in history with new name
     st.session_state['thread_id']=thread_id
 
-# chekpoint for sql to access the stored history
-# if 'checkpoint' not in st.session_state:
-#     conn=sqlite3.connect(DATA_BASE,check_same_thread=False)
-#     checkpoint=SqliteSaver(conn=conn)
-#     st.session_state['checkpoint']=checkpoint
+
 
 
 # thread_history storing history of threads objects with id and name
@@ -120,23 +116,6 @@ if st.sidebar.button("New Chat"):
     thread_id=generate_thread_id()
     st.session_state['thread_id']=thread_id
     st.session_state['threads_history'].append({'thread_id':st.session_state['thread_id'],'name':st.session_state['thread_id']})
-
-
-
-# for thread_id in st.session_state['threads_history']:
-#     if thread_id['thread_id']==thread_id['name']:
-#         continue
-#     if st.sidebar.button(thread_id['name']):
-#         clean_chat_history()
-#         st.session_state['thread_id']=thread_id['thread_id']
-#         messages=load_conversation(thread_id=thread_id['thread_id'])
-#         for message in messages:
-#             st.session_state['messages'].append(
-#                 {
-#                     'role':'user' if isinstance(message, HumanMessage) else 'assistant',
-#                     'content':message.content
-#                 }
-#             )
 
 
 def delete_thread_from_sql(thread_id):
