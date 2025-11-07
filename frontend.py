@@ -19,6 +19,19 @@ JSON_FILE_NAME="thread_id_names.json"
 JSON_UPLOAD="thread_id_uploads.json"
 load_dotenv()
 
+def creating_json_files():
+    thread_id_uploads = "thread_id_uploads.json"
+    if not os.path.exists(thread_id_uploads):
+        with open(thread_id_uploads, "w") as f:
+            json.dump({}, f)
+        print(f"✅ Created file: {thread_id_uploads}")
+    thread_id_names="thread_id_names.json"
+    if not os.path.exists(thread_id_names):
+        with open(thread_id_names, "w") as f:
+            json.dump({"threads_with_names":[]}, f)
+        print(f"✅ Created file: {thread_id_names}")
+
+creating_json_files()
 
 def clean_filename(filename: str) -> str:
     base = os.path.splitext(filename)[0]  # Remove extension
