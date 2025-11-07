@@ -1,5 +1,5 @@
 # ChatBot
-Replica of ChatGPT but whit own code using langchain,langgraph and streamlit.
+
 
 # 📌 AI Chatbot with File Upload (RAG + LangGraph + Streamlit)
 
@@ -42,8 +42,8 @@ into vector embeddings and stored thread-wise for context-aware answers.
 ### 1️⃣ Clone the project
 
 ``` bash
-git clone <your-repo-link>
-cd project
+git clone https://github.com/fakruddinbabadudekula/ChatBot.git ChatBot
+cd ChatBot
 ```
 
 ### 2️⃣ Create & activate a virtual environment
