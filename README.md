@@ -65,6 +65,8 @@ pip install -r requirements.txt
 ```
 
 > ✅ If you don't have a `requirements.txt`, here is a suggested one:
+### requirements.txt
+```bash 
 
 # LangChain Core
 langchain
@@ -127,6 +129,8 @@ langgraph
 langgraph-checkpoint-sqlite
 
 db-sqlite3
+
+```
 
 ------------------------------------------------------------------------
 
