@@ -83,6 +83,16 @@ def load_conversation(thread_id):
     filterd_msges=[]
     for msg in messages:
         if msg.type=="human" or msg.additional_kwargs.get('final_node')==True:
+            if isinstance(msg.content,list):
+                content=""
+                for text in msg.content:
+                    if isinstance(text,str):
+                        content+=text
+                    elif (text.get("type",None)=="text" and text.get('text',None)):
+                        content+=text.get('text')
+                msg.content=content
+
+
             filterd_msges.append(msg)
         
     return filterd_msges
@@ -388,7 +398,15 @@ if user_input:
                 stream_mode="messages"
             ):
                 if message_chunk.content and isinstance(message_chunk, AIMessage) and metadata.get("langgraph_node") in ['answer','agent']:
-                    yield message_chunk.content
+                    if isinstance(message_chunk.content,list):
+                        for text in message_chunk.content:
+                            content=""
+                            if isinstance(text,str):
+                                yield text
+                            elif (text.get("type",None)=="text" and text.get('text',None)):
+                                yield text.get('text')
+                    else:
+                        yield message_chunk.content
         try:
             with st.spinner("🤖 Thinking..."):
                 response = st.write_stream(stream_response)

@@ -5,15 +5,15 @@ import json
 import logging
 import sqlite3
 from dotenv import load_dotenv
-from typing import Literal
+# from typing import Literal
 from functools import lru_cache
 # ✅ LangGraph & LangChain
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph import MessagesState
 from langgraph.checkpoint.sqlite import SqliteSaver
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.tools import Tool
+
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 
 # ✅ LLMs
@@ -125,16 +125,19 @@ def generate_query_or_respond(state: State) -> State:
         raise ValueError("⚠️ No messages found in state!")
 
     tools = load_tools(thread_id=thread)
+    print("✅ Here are the tools which are passing to llm :",tools,type(tools))
 
     if tools:
         response = tool_llm.bind_tools(tools=tools).invoke(messages)
         if response.content:
             response.additional_kwargs['final_node']=True
+            print(f"✅ genereate_query_or_respond resoponse with tool llm  => {response}") 
 
     else:
         response = llm.invoke(messages)
         response.additional_kwargs['final_node']=True
-    print(f"✅ genereate_query_or_respond resoponse => {response}")
+        print(f"✅ genereate_query_or_respond resoponse llm=> {response}") 
+
     return {"messages": [response]}
 
 
@@ -181,7 +184,6 @@ def generate_answer(state: State):
     last_message = state["messages"][-1]# again converting into json.
 
     context=last_message.content
-    print(f"✅ history of messages without last message which is toolmessage =>{history}")
     answer = llm.invoke([
         HumanMessage(content=GENERATE_PROMPT.format(history=history, context=context))
     ])
