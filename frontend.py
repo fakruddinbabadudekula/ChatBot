@@ -119,30 +119,31 @@ Return only the title, nothing else.
     final_input=prompt.format(query=messages['query'],response=messages['response'])
     name=llm.invoke(final_input).content
     return str(name)
+# removde create_description instead uses the file type and file name to create description.
 
-def create_description(text):
-    prompt = """
-You are an assistant that writes concise lesson descriptions.
+# def create_description(text):
+#     prompt = """
+# You are an assistant that writes concise lesson descriptions.
 
-I will give you the first portion of text extracted from a lesson document.
+# I will give you the first portion of text extracted from a lesson document.
 
-Your task:
-- Write a clear and informative description of what the lesson is about.
-- Summarize the key purpose or learning objective.
-- Write in single sentence(max ~80words).
-- Use simple and professional language suitable for a course description.
-- Do not mention the document or extraction process.
+# Your task:
+# - Write a clear and informative description of what the lesson is about.
+# - Summarize the key purpose or learning objective.
+# - Write in single sentence(max ~80words).
+# - Use simple and professional language suitable for a course description.
+# - Do not mention the document or extraction process.
 
-Lesson text:
-"{text}"
+# Lesson text:
+# "{text}"
 
-Return only the description.
-"""
+# Return only the description.
+# """
 
-    final_input = prompt.format(text=text
-                                )
-    result = llm.invoke(final_input).content
-    return str(result)
+#     final_input = prompt.format(text=text
+#                                 )
+#     result = llm.invoke(final_input).content
+#     return str(result)
 
 
 def get_names(file_name):
@@ -235,10 +236,11 @@ if st.session_state.show_uploader:
                     st.warning(f"Unsupported file type: {f.type}")
                     continue
                 
-                file_description=create_description(text[:1000])
                 # Store basic file info
+                name=clean_filename(f.name)
+                file_description=f"A tool that fetch the related information about the user requested data and the document type is {f.type} and the name of the document is {name}"
                 file_data = {
-                    "name": clean_filename(f.name),
+                    "name": name,
                     "type": f.type,
                     "description":file_description
                     
