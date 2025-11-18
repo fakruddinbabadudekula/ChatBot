@@ -66,9 +66,9 @@ uv init
 
 uv venv
 
-uv add -r requirements.txt
+.\.venv\Scripts\activate
 
-.venv\Scripts\activate
+uv add -r requirements.txt
 ```
 
 > ✅ If you don't have a `requirements.txt`, here is a suggested one:
@@ -103,9 +103,10 @@ Create `.env` file in project root:
 
     GOOGLE_API_KEY=your_google_key
     OPENAI_API_KEY=your_openai_key(Open Router Api)
-    OPENAI_MODEL=openai/gpt-oss-20b:free(you can also change)  
+    OPENAI_MODEL=openai/gpt-oss-20b:free(you can also change see models in openrouter) 
+    OPENROUTER_BASE_URL=https://openrouter.ai/api/v1 
 
-## 🔑 Getinng OpenRouter API for free
+## 🔑 Geting OpenRouter API for free
 👉 https://youtu.be/E14hUveM4us?si=hBi2hFvrcrcrK9AX
 
 *(Use whichever model you set in `models.py`)*
@@ -125,9 +126,8 @@ Open the browser link provided (typically):\
 
 ## 🗑️ Clearing Vectorstores & History
 
-The UI provides delete controls for: ✅ Chat history\
-✅ Vectorstore folder\
-✅ Entries in JSON files & SQLite DB
+The UI provides delete controls for: 
+✅ Chat history which automatically deletes the associated resources and tools
 
 Handled automatically through functions in `frontend.py`.
 
@@ -138,7 +138,10 @@ Handled automatically through functions in `frontend.py`.
 -   Support more file types
 -   User authentication
 -   Cloud persistent vector storage
+-   Enhancement in retriever
 
+## Demo Video
+<video controls src="assets\Demo.mp4" title="Title"></video>
 ------------------------------------------------------------------------
 
 ## 💡 Credits
@@ -146,4 +149,5 @@ Handled automatically through functions in `frontend.py`.
 Built using: - **Streamlit** - **LangGraph / LangChain** - **Google
 Gemini / OpenAI** - **FAISS** - **HuggingFace Embeddings**
 
+My speacial thanks to **Openrouter**
 ------------------------------------------------------------------------
