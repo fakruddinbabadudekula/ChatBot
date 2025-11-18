@@ -141,7 +141,7 @@ Handled automatically through functions in `frontend.py`.
 -   Enhancement in retriever
 
 ## Demo Video
-<video controls src="assets\Demo.mp4" title="Title"></video>
+[▶️ Click to view demo video](assets\Demo.mp4)
 ------------------------------------------------------------------------
 
 ## 💡 Credits
